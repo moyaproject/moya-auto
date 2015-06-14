@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<moya xmlns="http://moyaproject.com"
+    xmlns:auto="http://moyaproject.com/auto"
+    xmlns:let="http://moyaproject.com/let">
+
+
+    <form libname="form.test1" legend="Auto complete Test" style="horizontal" xmlns="http://moyaproject.com/forms">
+        <input name="name" label="Country" class="input-xlarge" type="text"/>
+        <input name="code" label="Country Code" class="input-xlarge" type="text"/>
+        <submit-button/>
+
+        <auto:complete field="name" let:test="'it works!'" xmlns="http://moyaproject.com">
+            <return>
+                <map src="data:'countries.json'" value="Name" filter="lower:Name ^= lower:input"/>
+            </return>
+        </auto:complete>
+
+        <auto:complete field="code" xmlns="http://moyaproject.com">
+            <return>
+                <map src="data:'countries.json'" value="Code" filter="lower:Code ^= lower:input"/>
+            </return>
+        </auto:complete>
+    </form>
+
+</moya>
